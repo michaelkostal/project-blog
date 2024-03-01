@@ -14,8 +14,7 @@ async function Home() {
       <h1 className={styles.mainHeading}>
         Latest Content:
       </h1>
-      { blogPosts.map((post) => {
-          const { slug, title, abstract, publishedOn } = post;
+      { blogPosts.map(( { slug, title, abstract, publishedOn }) => {
           return <BlogSummaryCard
             key={slug}
             slug={slug}
