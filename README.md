@@ -1,5 +1,5 @@
 # Blog Project
-## Joy of React, Project III
+## Joy of React, Project III - MK
 
 In this project, we'll build an interactive MDX-based blog using Next.js 14 (App Router):
 
