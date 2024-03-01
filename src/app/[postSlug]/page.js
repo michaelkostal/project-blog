@@ -5,21 +5,22 @@ import BlogHero from '@/components/BlogHero';
 import styles from './postSlug.module.css';
 
 import { loadBlogPost } from '@/helpers/file-helpers';
-
-
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 async function BlogPost({params}) {
-  const thePost = await loadBlogPost(params.postSlug);
-  const { frontmatter, content } = thePost;
+  const post = await loadBlogPost(params.postSlug);
+  const { frontmatter: { title, publishedOn }, content } = post;
   
   return (
     <article className={styles.wrapper}>
       <BlogHero
-        title={frontmatter.title}
-        publishedOn={frontmatter.publishedOn}
+        title={title}
+        publishedOn={publishedOn}
       />
       <div className={styles.page}>
-        
+          <MDXRemote
+            source={content}
+          />
       </div>
     </article>
   );
