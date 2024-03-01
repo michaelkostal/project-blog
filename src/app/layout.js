@@ -24,6 +24,12 @@ const monoFont = Spline_Sans_Mono({
   variable: '--font-family-mono',
 });
 
+export const metadata = {
+  title: "Bits & Bytes",
+  description: "A wonderful blog about JavaScript"
+};
+
+
 function RootLayout({ children }) {
   // TODO: Dynamic theme depending on user preference
   const theme = 'light';
