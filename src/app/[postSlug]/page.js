@@ -1,5 +1,7 @@
 import React from 'react';
 
+import dynamic from 'next/dynamic';
+
 import BlogHero from '@/components/BlogHero';
 
 import styles from './postSlug.module.css';
@@ -12,7 +14,9 @@ import { BLOG_TITLE } from '@/constants';
 
 import CodeSnippet from '@/components/CodeSnippet';
 
-import DivisionGroupsDemo from '@/components/DivisionGroupsDemo';
+const DivisionGroupsDemo = dynamic(() => 
+  import('@/components/DivisionGroupsDemo')
+);
 
 export async function generateStaticParams() {
   const blogPosts = await getBlogPostList();
