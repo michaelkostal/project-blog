@@ -1,22 +1,18 @@
 import React from 'react';
 
-import dynamic from 'next/dynamic';
-
 import BlogHero from '@/components/BlogHero';
 
 import styles from './postSlug.module.css';
 
 import { loadBlogPost,getBlogPostList } from '@/helpers/file-helpers';
 
+import COMPONENT_MAP from '@/helpers/mdx-helpers';
+
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import { BLOG_TITLE } from '@/constants';
 
-import CodeSnippet from '@/components/CodeSnippet';
 
-const DivisionGroupsDemo = dynamic(() => 
-  import('@/components/DivisionGroupsDemo')
-);
 
 export async function generateStaticParams() {
   const blogPosts = await getBlogPostList();
@@ -49,10 +45,7 @@ async function BlogPost({params}) {
       <div className={styles.page}>
           <MDXRemote
             source={content}
-            components={{
-              pre: CodeSnippet,
-              DivisionGroupsDemo
-            }}
+            components={COMPONENT_MAP}
           />
       </div>
     </article>
