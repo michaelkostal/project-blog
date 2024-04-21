@@ -10,6 +10,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import { BLOG_TITLE } from '@/constants';
 
+import CodeSnippet from '@/components/CodeSnippet';
+
 export async function generateStaticParams() {
   const blogPosts = await getBlogPostList();
 
@@ -41,6 +43,9 @@ async function BlogPost({params}) {
       <div className={styles.page}>
           <MDXRemote
             source={content}
+            components={{
+              pre: CodeSnippet
+            }}
           />
       </div>
     </article>
