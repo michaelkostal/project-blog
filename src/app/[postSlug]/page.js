@@ -12,6 +12,8 @@ import { BLOG_TITLE } from '@/constants';
 
 import CodeSnippet from '@/components/CodeSnippet';
 
+import DivisionGroupsDemo from '@/components/DivisionGroupsDemo';
+
 export async function generateStaticParams() {
   const blogPosts = await getBlogPostList();
 
@@ -44,7 +46,8 @@ async function BlogPost({params}) {
           <MDXRemote
             source={content}
             components={{
-              pre: CodeSnippet
+              pre: CodeSnippet,
+              DivisionGroupsDemo
             }}
           />
       </div>
