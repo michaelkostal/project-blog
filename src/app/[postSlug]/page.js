@@ -4,10 +4,19 @@ import BlogHero from '@/components/BlogHero';
 
 import styles from './postSlug.module.css';
 
-import { loadBlogPost } from '@/helpers/file-helpers';
+import { loadBlogPost,getBlogPostList } from '@/helpers/file-helpers';
+
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import { BLOG_TITLE } from '@/constants';
+
+export async function generateStaticParams() {
+  const blogPosts = await getBlogPostList();
+
+  return blogPosts.map(({ slug }) => ({
+    postSlug: slug,
+  }));
+}
 
 // Generate metadata
 export async function generateMetadata({ params }) {
